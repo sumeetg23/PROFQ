@@ -12,3 +12,8 @@
     
     # FASTQ files from WI Genome core end with ";1" or ";2" in format 1 specified above - 
     # This script can handle this variation
+    
+    Example1: perl FASTQ_Format_Conversion.pl s_1_sequence.txt.tar.gz > Output.filename
+    Example2: perl FASTQ_Format_Conversion.pl s_1_sequence.txt.gz > Output.filename
+    Example3: perl FASTQ_Format_Conversion.pl s_1_sequence.txt > Output.filename
+    Example3: perl FASTQ_Format_Conversion.pl s_1_sequence.fq > Output.filename
