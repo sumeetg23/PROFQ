@@ -13,13 +13,14 @@ use warnings;
 use strict;
 use Carp;
 
-my $randomrunid = int(rand(10)*100);
+my $randomrunid = "001";
 
 my $USAGE = "Usage: perl FASTQ_Format_Conversion.pl <FASTQ file>\n\n";
 $USAGE .= "Example1: perl FASTQ_Format_Conversion.pl s_1_sequence.txt.tar.gz > Output.filename\n\n";
 $USAGE .= "Example2: perl FASTQ_Format_Conversion.pl s_1_sequence.txt.gz > Output.filename\n\n";
 $USAGE .= "Example3: perl FASTQ_Format_Conversion.pl s_1_sequence.txt > Output.filename\n\n";
 $USAGE .= "Example3: perl FASTQ_Format_Conversion.pl s_1_sequence.fq > Output.filename\n\n";
+
 
 if( (!defined($ARGV[0])) || (scalar(@ARGV) != 1)) { 
 	print $USAGE."\n"; 
