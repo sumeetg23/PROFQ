@@ -6,6 +6,7 @@ SYNOPSIS
        FASTQ_Format_Conversion_v2.pl [options]
 
 OPTIONS
+
        --task
            (Required.) User specified task to perform. Input options are "changeidformat" OR "makeread2umi". Reform to script manual (--man option) for details.
 
