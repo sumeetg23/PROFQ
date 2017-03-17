@@ -409,6 +409,10 @@ FASTQ_Format_Conversion_v2.pl [options]
 
 (Required Only for demultiplex task) List of barcodes separate by a comma. EXAMPLE: TAGTGC,ACGTGA,TGACGT
 
+=item B<--mismatches>
+
+(Optional.) Maximum number of mismatches allowed to map to a barcode. If a sequenced barcode matches to more than 1 expected barcode with the same number of mismatches, the read will not be assigned to either barcode. DEFAULT: 2
+
 =item B<--options>
 
 Prints a brief help message and exits.
