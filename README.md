@@ -1,4 +1,4 @@
-# PROFQ - Processing FASTQ for format conversion
+# PROFQ - Processing FASTQ for format conversion or demultiplexing
 
 # USAGE
 
