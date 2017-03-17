@@ -9,8 +9,8 @@ OPTIONS
 
     --task
         (Required.) User specified task to perform. Input options are
-        "changeidformat" OR "makeread2umi". Reform to script manual (--man
-        option) for details.
+        "changeidformat" OR "makeread2umi" OR "demultiplex". Reform to
+        script manual (--man option) for details.
 
     --read1fastq
         (Required.) Full path to the read 1 FASTQ file.
