@@ -13,7 +13,7 @@ DESCRIPTION: This script can perform the following 2 tasks:
 
    2. "makeread2umi" - Extract the UMI sequence from the index read and put it in a separate FASTQ file. The output can be used to identify duplicates using the UMI FASTQ file and alignment (SAM) file for read 1.
 
-   3. "demultiplex" - Demultiplex single FASTQ file into multiple FASTQ files based the expected barcodes to be sequenced.
+   3. "demultiplex" - Demultiplex single FASTQ file into multiple FASTQ files based the expected barcodes to be sequenced. The script allows for user defined mismatches (default: 2) in the barcode.
 
 
 
