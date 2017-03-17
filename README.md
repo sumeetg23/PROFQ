@@ -1,5 +1,22 @@
 # PROFQ - Processing FASTQ for format conversion or demultiplexing
 
+DESCRIPTION: This script can perform the following 2 tasks:
+
+   1. "changeidformat" - Converts FASTQ read header/identifier format
+
+       Automatically identifies the format of the read id and changes it between the 2 following formats
+           
+           read id format 1: @HWUSI-EAS100R:6:73:941:1973#ATCACG/1
+           read id format 2: @EAS139:136:FC706VJ:2:2104:15343:197393 1:Y:18:ATCACG
+
+        FASTQ files from WI Genome core end with ";1" or ";2" in format 1 specified above - This script can handle this variation
+
+   2. "makeread2umi" - Extract the UMI sequence from the index read and put it in a separate FASTQ file. The output can be used to identify duplicates using the UMI FASTQ file and alignment (SAM) file for read 1.
+
+   3. "demultiplex" - Demultiplex single FASTQ file into multiple FASTQ files based the expected barcodes to be sequenced.
+
+
+
 # USAGE
 
 SYNOPSIS
@@ -55,19 +72,4 @@ OPTIONS
 
     --man
         Prints a brief description and help message.
-
-DESCRIPTION
-       This program can perform the following 2 tasks:
-
-       1. "changeidformat" - Converts FASTQ read header/indentifier format
-
-               Automatically identifies the format of the read id and changes it between the 2 following 2 formats
-               read id format 1: @HWUSI-EAS100R:6:73:941:1973#ATCACG/1
-               read id format 2: @EAS139:136:FC706VJ:2:2104:15343:197393 1:Y:18:ATCACG
-
-               FASTQ files from WI Genome core end with ";1" or ";2" in format 1 specified above - This script can handle this variation
-
-       2. "makeread2umi" - Extract the UMI sequence from the index read and put it in a separate FASTQ file. The output can be used to identify duplicates using the UMI FASTQ file and alignment (SAM) file for read 1.
-
-       3. "demultiplex" - Demultiplex single FASTQ file into multiple FASTQ files based the expected barcodes to be sequenced.
 
