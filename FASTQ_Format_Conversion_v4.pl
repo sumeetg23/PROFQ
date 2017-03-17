@@ -34,6 +34,7 @@ my $listofbarcodes = "";
 my $randomrunid = int(rand(10)*100);
 my $flowcellid = "Unknown";
 my $uniquestr = "Processed";
+
 &Getopt::Long::GetOptions(
  		'task=s'		=> \$task,
  		'read1fastq=s'	=> \$read1fastq,
@@ -45,6 +46,7 @@ my $uniquestr = "Processed";
  		'options'	=> \$options,
   		'man'	=> \$man,
  		'listofbarcodes=s'	=> \$listofbarcodes,
+ 		'mismatches=s'	=> \$mismatches,
  		'help|h'	=> \$help
 ) or pod2usage( { -message => "\n\nERROR: Invalid Parameter\n\n" , -verbose => 1} );
 
@@ -94,7 +96,7 @@ if($pipecmd !~ m/cat/){
 	exit;
 }
 
-processfq($pipecmd,$task,$randomrunid,$outfilename,$listofbarcodes,$infilename,$outputfolder,$uniquestr);
+processfq($pipecmd,$task,$randomrunid,$outfilename,$listofbarcodes,$infilename,$outputfolder,$uniquestr,$mismatches);
 
 if($runtype eq "PE") {
 	
@@ -113,7 +115,7 @@ if($runtype eq "PE") {
 		exit;
 	}
 	
-	processfq($pipecmd,$task,$randomrunid,$outfilename,$listofbarcodes,$infilename,$outputfolder,$uniquestr);
+	processfq($pipecmd,$task,$randomrunid,$outfilename,$listofbarcodes,$infilename,$outputfolder,$uniquestr,$mismatches);
 }
 
 sub processfq {
@@ -126,6 +128,7 @@ sub processfq {
 	my $infilename = shift;
 	my $outputfolder = shift;
 	my $uniquestr = shift;
+	my $mismatches = shift;
 	my @barcodelist=split(/,/,$listofbarcodes);
 	
 	open(my $PIPEIN, '-|', $pipecmd) or die "Cannot open pipe [$pipecmd]: $!\n";
@@ -433,5 +436,7 @@ This program can perform the following 2 tasks:
 	FASTQ files from WI Genome core end with ";1" or ";2" in format 1 specified above - This script can handle this variation
     
 2. "makeread2umi" - Extract the UMI sequence from the index read and put it in a separate FASTQ file. The output can be used by NuGen's tool to identify duplicates using the FASTQ file and alignment file for read 1.
+
+3. "demultiplex" - Demultiplex single FASTQ file into multiple FASTQ files based the expected barcodes to be sequenced.
 
 =cut
