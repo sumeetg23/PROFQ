@@ -3,7 +3,7 @@
 # USAGE
 
 SYNOPSIS
-       FASTQ_Format_Conversion_v2.pl [options]
+       FASTQ_Format_Conversion_v4.pl [options]
 
 OPTIONS
 
