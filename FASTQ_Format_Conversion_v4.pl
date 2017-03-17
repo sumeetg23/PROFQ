@@ -376,7 +376,7 @@ FASTQ_Format_Conversion_v2.pl [options]
 
 =item B<--task>
 
-(Required.) User specified task to perform. Input options are "changeidformat" OR "makeread2umi". Reform to script manual (--man option) for details.
+(Required.) User specified task to perform. Input options are "changeidformat" OR "makeread2umi" OR "demultiplex". Reform to script manual (--man option) for details.
 
 =item B<--read1fastq>
 
