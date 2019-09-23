@@ -154,6 +154,12 @@ sub processfq {
 	
 		my ($id, $readseq, $qualityid, $qualityseq, $formatconv, $totalreads) = getnextseq($PIPEIN);
 		my ($newid, $barcodeseq) = changeidformat($id,$formatconv,$randomrunid,$flowcellid);
+		
+		# if no index read is present then the barcodeseq is the first x bases of read 1, x = barcodelength
+		if($barcodeseq == 0 || !defined ($barcodeseq)){
+			$barcodeseq = substr($readseq,0,$barcodelength);
+		}
+
 		my ($newqualityid, $qualityindexeq) = changeidformat($qualityid,$formatconv,$randomrunid,$flowcellid);
 		if($task eq "changeidformat"){
 			print OUTPUT $newid."\n".$readseq."\n".$newqualityid."\n".$qualityseq."\n";
@@ -176,7 +182,8 @@ sub processfq {
 			# if not , then score the barcode
 			if(!defined($indexbarcode{$barcodeseq})){
 				my %calscore = scorebarcode($barcodeseq,\@barcodelist);
-				$indexbarcode{$barcodeseq} = find_barcode_bin(\%calscore,$mismatches);
+				my $threshold = $barcodelength-$mismatches;
+				$indexbarcode{$barcodeseq} = find_barcode_bin(\%calscore,$threshold);
 			}
 			
 			# if yes, then put it in the bin file
